@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from shlex import split
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -42,7 +43,27 @@ class HBNBCommand(cmd.Cmd):
             if not line:
                 raise SyntaxError()
             my_list = line.split(" ")
+
             obj = eval("{}()".format(my_list[0]))
+
+            regex_fl = '\\d+\\.\\d+'
+            regex_int = '^[-+]?[0-9]+$'
+
+            for param in my_list[1:]:
+                paramsplit = param.split('=')
+                key = paramsplit[0]
+                val = paramsplit[1]
+                if val[0] != '"':
+                    if re.search(regex_fl, val):
+                        val = float(val)
+                    elif re.search(regex_int, val):
+                        val = int(val)
+                    else:
+                        continue
+                else:
+                    val = val[1:-1]
+                    val = val.replace("_", " ")
+                setattr(obj, key, val)
             obj.save()
             print("{}".format(obj.id))
         except SyntaxError:
