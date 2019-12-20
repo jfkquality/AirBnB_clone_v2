@@ -29,10 +29,9 @@ class FileStorage:
         dic = {}
         ob = self.__objects
 
-        for i in ob:
-            if cls is not None:
-                if isinstance(ob[i], cls):
-                    dic[i] = ob[i]
+        for i in ob.keys():
+            dic[i] = ob[i]
+
         return dic
 
     def new(self, obj):
@@ -69,12 +68,8 @@ class FileStorage:
         """
         ob = self.__objects
 
-        for i in ob.values():
-            if obj is i:
-                key = i
-                break
-        try:
-            with open("file.json", "w+") as i:
-                # we have to open the file and remove the object from it.
-        except Exception:
-            pass
+        for k, v in ob.items():
+            if obj is v:
+                del self.__objects[k]
+                self.save()
+                return

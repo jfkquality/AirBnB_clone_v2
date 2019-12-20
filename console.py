@@ -46,7 +46,8 @@ class HBNBCommand(cmd.Cmd):
 
             obj = eval("{}()".format(my_list[0]))
 
-            regex_fl = '\\d+\\.\\d+'
+            regex_str = '^\".*\"$'
+            regex_fl = '^[-+]?\\d+\\.\\d+$'
             regex_int = '^[-+]?[0-9]+$'
 
             for param in my_list[1:]:
