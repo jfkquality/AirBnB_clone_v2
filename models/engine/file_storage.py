@@ -26,7 +26,14 @@ class FileStorage:
             returns a dictionary of __object
             v2. return objects for a specific class
         """
-        return cls.__objects
+        dic = {}
+        ob = self.__objects
+
+        for i in ob:
+            if cls is not None:
+                if isinstance(ob[i], cls):
+                    dic[i] = ob[i]
+        return dic
 
     def new(self, obj):
         """sets __object to given obj
@@ -55,4 +62,19 @@ class FileStorage:
                     value = eval(value["__class__"])(**value)
                     self.__objects[key] = value
         except FileNotFoundError:
+            pass
+
+    def delete(self, obj=None):
+        """delete obj from __objects if it’s inside
+        """
+        ob = self.__objects
+
+        for i in ob.values():
+            if obj is i:
+                key = i
+                break
+        try:
+            with open("file.json", "w+") as i:
+                # we have to open the file and remove the object from it.
+        except Exception:
             pass
