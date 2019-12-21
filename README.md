@@ -11,7 +11,6 @@ This is the console /command interpreter for the Holberton Airbnb clone project.
 * Place
 * Review
 
-
 ### Commands:
 * create - create an object
 * show - show an object (based on id)
@@ -19,7 +18,6 @@ This is the console /command interpreter for the Holberton Airbnb clone project.
 * all - show all objects, of one type or all types
 * quit/EOF - quit the console
 * help - see descriptions of commands
-
 
 To start, navigate to the project folder and enter `./console.py` in the shell.
 
