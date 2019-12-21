@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """This is the city class"""
+from models.state import State
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 
@@ -12,4 +13,4 @@ class City(BaseModel, Base):
     """
     __tablename__ = 'cities'
     name = Column(String(128), nullable=False)
-    state_id = Column(ForeignKey('states.id'))
+    state_id = Column(ForeignKey(State.id))
