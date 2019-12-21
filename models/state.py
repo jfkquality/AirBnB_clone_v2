@@ -15,6 +15,6 @@ class State(BaseModel, Base):
     cities = relationship('City', backref='state')
 
     @property
-    """ getter """
     def cities(self):
+        """ getter """
         return self.cities

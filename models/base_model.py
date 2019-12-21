@@ -13,9 +13,9 @@ class BaseModel:
     """This class will defines all common attributes/methods
     for other classes
     """
-    id = Column{  # jfk added these class attributes
+    id = Column(  # jfk added these class attributes
         String(60),
-        primary_key = True
+        primary_key=True
         )
     created_at = Column(
         DateTime,
@@ -39,6 +39,8 @@ class BaseModel:
             updated_at: updated date
         """
         self.id = str(uuid.uuid4())
+        self.created_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
 
         if kwargs:
             for key, value in kwargs.items():
