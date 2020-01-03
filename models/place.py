@@ -69,3 +69,13 @@ class Place(BaseModel, Base):
         default=0)
 
     latitude = Column(
+        Float,
+        nullable=True
+    )
+
+    longitude = Column(
+        Float,
+        nullable=True
+    )
+
+    reviews = relationship("Review", backref='place')

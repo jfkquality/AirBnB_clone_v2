@@ -15,7 +15,8 @@ class BaseModel:
     """
     id = Column(  # jfk added these class attributes
         String(60),
-        primary_key=True
+        primary_key=True,
+        unique=True
         )
     created_at = Column(
         DateTime,
@@ -109,4 +110,4 @@ class BaseModel:
     def delete(self):
         """Delete current instance from storage
         """
-        models.storage.delete()
+        models.storage.delete(self)  # JFK added self

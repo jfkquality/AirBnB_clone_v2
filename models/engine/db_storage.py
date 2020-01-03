@@ -24,11 +24,13 @@ class DBStorage:
                 getenv('HBNB_MYSQL_HOST'),
                 getenv('HBNB_MYSQL_DB')),
                 pool_pre_ping=True)
+        Base.metadata.create_all(self.__engine)
+
 
         if getenv('HBNB_ENV') == "test":
             Base.metadata.drop_all()
 
-    def all(self, cls):
+    def all(self, cls=None):  #JFK added =none
         dic = {}
         if cls is None:
             query = self.__session.query(
@@ -42,7 +44,7 @@ class DBStorage:
         else:
             query = self.__session.query(cls)
         for a in query:
-            key = "<{}>.<{}>".format(type(a).__name__, a.id)
+            key = "{}.{}".format(type(a).__name__, a.id)  # JFK: removed <> around {}
             value = a
             dic[key] = value
         return dic
@@ -58,7 +60,7 @@ class DBStorage:
             self.__session.delete(obj)
 
     def reload(self):
-        Base.metadata.create_all(__engine)
+        Base.metadata.create_all(self.__engine)
         sessionista = sessionmaker(
             bind=self.__engine,
             expire_on_commit=False)
