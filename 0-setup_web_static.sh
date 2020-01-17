@@ -16,6 +16,7 @@ EOF
 sudo ln -sf /data/web_static/releases/test /data/web_static/current
 sudo chown -hR ubuntu:ubuntu /data/
 location=$(cat <<EOF
+
       location /hbnb_static {
         alias /data/web_static/current;
       }
