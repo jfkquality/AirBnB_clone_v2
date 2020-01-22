@@ -11,5 +11,9 @@ def hello_hbnb():
 def hbnb():
     return 'HBNB!'
 
+@app.route('/c/<string:text>', strict_slashes=False)
+def cisfun(text):
+    return 'C %s' % text.replace("_", " ")
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
