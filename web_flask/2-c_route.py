@@ -5,14 +5,17 @@ app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
+    """Serve Hello HBNB!"""
     return 'Hello HBNB!'
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
+    """Serve HBNB."""
     return 'HBNB!'
 
 @app.route('/c/<string:text>', strict_slashes=False)
 def cisfun(text):
+    """Serve C + text; replace _ with space."""
     return 'C %s' % text.replace("_", " ")
 
 if __name__ == "__main__":
