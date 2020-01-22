@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 # Starts a Flask web app. Listen on 0.0.0.0:5000. Route: /hbnb display "HBNB"
+"""Web flask project."""
+
 from flask import Flask
 from flask import render_template
 app = Flask(__name__)
