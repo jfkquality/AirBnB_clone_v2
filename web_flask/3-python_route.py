@@ -22,7 +22,7 @@ def cisfun(text):
     return 'C %s' % text.replace("_", " ")
 
 
-@app.route('/python', defaults={'text': "is cool"})
+@app.route('/python', defaults={'text': "is cool"}, strict_slashes=False)
 @app.route('/python/<string:text>', strict_slashes=False)
 def pythoniscool(text):
     """Serve Python + text with default value; replace _ with space."""
