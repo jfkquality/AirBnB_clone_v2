@@ -24,5 +24,10 @@ def pythoniscool(text):
     """Serve Python + text with default value; replace _ with space."""
     return 'Python %s' % text.replace("_", " ")
 
+@app.route('/number/<int:n>', strict_slashes=False)
+def number(n):
+    """Serve 'n is a number iff n is an integer."""
+    return '%d is a number' % n
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
