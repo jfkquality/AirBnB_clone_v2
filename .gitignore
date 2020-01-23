@@ -1,6 +1,7 @@
 *~
 *#
 *.pyc
+*__pycache*
 */__pycache*
 */__pychache__/
 */__pychache__/*
